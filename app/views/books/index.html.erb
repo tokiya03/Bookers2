@@ -1,2 +1,32 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<%= render 'users/user', users:@users %>
+
+<div class="col-md-8 offset-md-1">
+  <h2>Books</h2>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          <% @users.each do |post_user| %>
+            <%= image_tag post_user.get_profile_image(80, 80) %>
+          <% end %>
+        </th>
+        <th></th>
+        <% @books.each do |post_book| %>
+          <td>
+            <%= post_book.title %>
+          </td>
+          <td>
+            <%= post_book.body %>
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
