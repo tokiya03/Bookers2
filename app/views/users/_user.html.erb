@@ -2,12 +2,10 @@
 
   <h2>User info</h2>
 
-
-  <% @users.each do |user_image| %>
-      <%= image_tag user_image.get_profile_image(100, 100) %>
-  <% end %>
+  <%= image_tag current_user.get_profile_image(100, 100) %>
 
   <table class="table">
+
     <tbody>
         <tr>
         <th>name</th>

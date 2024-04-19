@@ -2,7 +2,7 @@
 
 <div class="col-md-8 offset-md-1">
   <h2>Books</h2>
-  <table>
+  <table class="table table-hover table-inverse">
     <thead>
       <tr>
         <th></th>
@@ -11,22 +11,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>
-          <% @users.each do |post_user| %>
-            <%= image_tag post_user.get_profile_image(80, 80) %>
-          <% end %>
-        </th>
-        <th></th>
-        <% @books.each do |post_book| %>
+      <% @books.each do |post_book| %>
+        <tr>
           <td>
-            <%= post_book.title %>
+            <%= image_tag post_book.user.get_profile_image(80, 80) %>
+          </td>
+          <td>
+            <%= link_to post_book.title, book_path(post_book.id) %>
           </td>
           <td>
             <%= post_book.body %>
           </td>
-        <% end %>
-      </tr>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
