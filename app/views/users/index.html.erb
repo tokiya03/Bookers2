@@ -1,29 +1,38 @@
-<%= render 'user', users:@users %>
+<main>
+  <div class="container px-5 px-sm-0 mt-3">
 
-<div class="col-md-8 offset-md-1">
-  <h2>Users</h2>
-  <table class="table table-hover table-inverse">
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td>
-            <%= image_tag user.get_profile_image(80, 80) %>
-          </td>
-          <td>
-            <%= user.name %>
-          </td>
-          <td>
-            <%= link_to 'Show', user_path(user.id) %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'user', user: current_user %>  <!-- _user.html.erbを呼び込む -->
+      </div>
+
+      <div class="col-md-8 offset-md-1">
+        <h2>Users</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= image_tag user.get_profile_image(80, 80) %>
+                </td>
+                <td>
+                  <%= user.name %>
+                </td>
+                <td>
+                  <%= link_to 'Show', user_path(user.id) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+       </table>
+      </div>
+    </div>
+  </div>
+</main>
