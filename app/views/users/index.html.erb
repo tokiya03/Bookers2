@@ -3,7 +3,7 @@
 
     <div class="row">
       <div class="col-md-3">
-        <%= render 'user', user: current_user %>  <!-- _user.html.erbを呼び込む -->
+        <%= render 'user', user: current_user, book: @book %>  <!-- _user.html.erbを呼び込む -->
       </div>
 
       <div class="col-md-8 offset-md-1">
