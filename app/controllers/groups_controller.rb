@@ -5,7 +5,6 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @book = Book.new
-    @user = User.find(current_user.id)
   end
 
   def new
@@ -14,7 +13,10 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    # owner_idをグループを作成者のIDに指定
     @group.owner_id = current_user.id
+    # 作成するグループに作成者を追加
+    @group.users << current_user
     if @group.save
       redirect_to groups_path
     else
@@ -29,7 +31,6 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @book = Book.new
-    @user = User.find(params[:id])
   end
 
   def update
